@@ -1,11 +1,15 @@
 let dictate= document.getElementById('dictate');
+let pausebtn= document.getElementById('pause');
 let dictateTimeoutArr = [];
 
 // for pausing
-document.getElementById('pause').onclick = () =>{
+pausebtn.onclick = () =>{
 	for(let v=0; v<dictateTimeoutArr.length; v++){
 		clearTimeout(dictateTimeoutArr[v]);
 	}
+
+	pausebtn.innerHTML = 'Stopped <i class="far fa-play-circle"></i>';
+	pausebtn.setAttribute('disabled', '');
 };
 
 
@@ -13,6 +17,8 @@ document.getElementById('pause').onclick = () =>{
 // for adding dummy text
 addDummy = () => {
 	document.getElementById('text').value+="The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack.";
+
+	dictate.removeAttribute('disabled');
 };
 
 
@@ -86,4 +92,19 @@ dictate.onclick = () => {
 	},2000);
 	
 
+
+	pausebtn.innerHTML = 'Stop <i class="far fa-pause-circle"></i>';
+	pausebtn.removeAttribute('disabled');
+
+
+};
+
+
+// when type in textarea
+document.getElementById('text').onkeyup = () => {
+	if(document.getElementById('text').value.length < 1){
+		dictate.setAttribute('disabled','');
+	}else{
+		dictate.removeAttribute('disabled');
+	}
 };

@@ -40,6 +40,7 @@ body{
 
 .options button{
 	font-size: 1.1rem;
+	width: 180px;
 	padding: 8px 25px;
 	border: none;
 	outline: none;
@@ -57,14 +58,24 @@ body{
 .options button:active{
 	transform: scale(0.95);
 }
-
-
-
-
-@media(max-width: 550px){
-	html{font-size: 15px;}
+.options button:disabled{
+	opacity: .4;
+	cursor: not-allowed;
 }
-@media(max-width: 450px){
+.options button .far, .options button .fas, .options button .fab{
+	pointer-events: none;
+}
+
+
+
+
+@media(max-width: 580px){
+	html{font-size: 15px;}
+	.options button{
+		width: 150px;
+	}
+}
+@media(max-width: 500px){
 	.options{
 		margin-top: 20px;
 		flex-direction: column;
