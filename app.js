@@ -10,6 +10,11 @@ pausebtn.onclick = () =>{
 
 	pausebtn.innerHTML = 'Stopped <i class="far fa-play-circle"></i>';
 	pausebtn.setAttribute('disabled', '');
+	dictate.removeAttribute('disabled');
+
+	document.getElementById('text').setAttribute('style','display:block; z-index:1;');
+	document.getElementById('text1').setAttribute('style','display:none; z-index:-1;');
+	document.getElementById('dummy').removeAttribute('disabled');
 };
 
 
@@ -73,10 +78,44 @@ dictate.onclick = () => {
 			}else{
 				toBeSpoken = arr[i];
 			}
-			
+
+
+			let ifLast_fun = function(){};
+			if(i>arr.length-3){ // if this is last to be speaked
+				ifLast_fun = function(){
+					document.getElementById('text').setAttribute('style','display:block; z-index:1;');
+					document.getElementById('text1').setAttribute('style','display:none; z-index:-1;');
+					document.getElementById('dummy').removeAttribute('disabled');
+				};
+			}
+
+
 			let fop = setTimeout(()=>{
+
+				let honeWlaText = '';
+				let toBeMatched = '';
+
+				for(let jk=0; jk<arr.length; jk+=3){
+					if(arr[jk+2] != undefined){
+						toBeMatched = arr[jk]+" "+arr[jk+1]+" "+arr[jk+2];
+					}else if(arr[i+1] != undefined){
+						toBeMatched = arr[jk]+" "+arr[jk+1];
+					}else{
+						toBeMatched = arr[jk];
+					}
+					
+					if(toBeMatched!=toBeSpoken){
+						honeWlaText+=toBeMatched+' ';
+					}else{
+						honeWlaText+='<b>'+toBeMatched+'</b> ';
+					}
+				}
+
 				speakNow(toBeSpoken);
-				
+
+				document.getElementById('text1').innerHTML = honeWlaText;
+				setTimeout(ifLast_fun,8000);
+
 			}, afj*1000);
 
 			dictateTimeoutArr.push(fop);
@@ -89,13 +128,18 @@ dictate.onclick = () => {
 			
 		}
 
+
+		document.getElementById('text').setAttribute('style','display:none; z-index:-1;');
+		document.getElementById('text1').setAttribute('style','display:block; z-index:1;');
+
 	},2000);
 	
 
 
+	document.getElementById('dummy').setAttribute('disabled','');
 	pausebtn.innerHTML = 'Stop <i class="far fa-pause-circle"></i>';
 	pausebtn.removeAttribute('disabled');
-
+	dictate.setAttribute('disabled','');
 
 };
 

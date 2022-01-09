@@ -17,18 +17,33 @@ body{
 	margin-top:  50px;
 }
 
-#text{
-	font-size: 1rem;
+.texts_wrapper{
+	position: relative;
 	width:50vw;
 	min-width: 350px;
 	height:300px;
+}
+#text,#text1{
+	position: absolute;
+	top: 0; left: 0;
+	background: #f5f6fa;
+	box-shadow: 0px 37px 37px -15px rgba(0,0,0,0.1);
 	border: none;
 	outline: none;
-	box-shadow: 0px 37px 37px -15px rgba(0,0,0,0.1);
-	background: #f5f6fa;
-	resize: none;
+	font-size: 1rem;
+	width: 100%; height: 100%;
 	padding: 16px;
 	border-radius: 10px;
+}
+#text{
+	z-index: 1;
+	resize: none;
+}
+
+#text1{
+	z-index: -1;
+	display: none;
+	overflow-y: auto;
 }
 
 .options{
@@ -87,7 +102,7 @@ body{
 	}
 }
 @media(max-width: 375px){
-	#text{
+	.texts_wrapper{
 		min-width: auto;
 		width: 90vw;
 	}
