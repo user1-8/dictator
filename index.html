@@ -23,11 +23,26 @@
 		</div>
 
 		<div class="options">
-			<button id="dictate" type="button" disabled>Dictate <i class="fas fa-volume-up"></i></button>
+			<div class="option dire disabled">
+				<button id="dictateread" onclick="dictateread_fun(this)" type="button">
+					Dictate 
+					<i class="fas fa-volume-up"></i>
+				</button>
+				<div class="arrow fas fa-caret-down" onclick="slide_slider(this)"></div>
+				<div class="slider">
+					<div class="slide_opt" onclick="slct_di(this)">Dictate</div>
+					<div class="slide_opt" onclick="slct_re(this)" >Read</div>
+				</div>
+			</div>
 
-			<button id="pause" type="button" disabled>Stop <i class="far fa-pause-circle"></i></button>
+			<div class="option">
+				<button id="pause" type="button" disabled>Stop <i class="far fa-pause-circle"></i></button>
+			</div>
+
+			<div class="option">			
+				<button id="dummy" type="button" onclick="addDummy()">Dummy <i class="fas fa-paragraph"></i></button>
+			</div>
 			
-			<button id="dummy" type="button" onclick="addDummy()">Dummy <i class="fas fa-paragraph"></i></button>
 		</div>
 	</div>
 
