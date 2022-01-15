@@ -76,7 +76,7 @@ body{
 
 .options button{
 	font-size: 1.1rem;
-	width: 9rem;
+	width: 9.5rem;
 	padding: 8px 25px;
 	border: none;
 	outline: none;
@@ -104,7 +104,7 @@ body{
 
 .option .arrow{
 	cursor: pointer;
-	margin-left: 3px;
+	margin-left: 5px;
 	width: 22px; height: 22px;
 	display: inline-flex;
 	align-items: center;
@@ -165,9 +165,8 @@ body{
 	}
 	.option .arrow{
 		position: absolute;
-	    top: 50%;
-	    right: 0%;
-	    transform: translate(0%, -50%);
+	    top: calc(50% - 11px);
+	    right: -2px;
 	}
 }
 @media(max-width: 375px){
